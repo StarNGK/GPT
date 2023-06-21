@@ -11,7 +11,7 @@ A commercially-viable ChatGpt web application built with React.
 
 [Issues](https://github.com/79E/ChatGPT-Web/issues) / [Buy Me a Coffee](https://www.buymeacoffee.com/beggar) / [赞助我](https://files.catbox.moe/o0znrg.JPG)
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/79E/ChatGpt-Web)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=StarNGK/GPT)
 
 </div>
 
