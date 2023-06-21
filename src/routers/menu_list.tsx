@@ -174,11 +174,6 @@ const admin = {
       path: '/admin/config',
       name: '系统配置',
       icon: <SettingFilled />
-    },
-    {
-      path: 'https://github.com/79E/ChatGpt-Web',
-      name: 'Github',
-      icon: <GithubFilled />
     }
   ]
 }
