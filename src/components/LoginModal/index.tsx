@@ -44,15 +44,7 @@ export function LoginCard(props: {
       form={props.form}
       logo="https://u1.dl0.cn/icon/openailogo.svg"
       title=""
-      subTitle="全网最便宜的人工智能对话"
-      actions={(
-        <Space>
-          <HeartFilled />
-          <RedditCircleFilled />
-          <SlackCircleFilled />
-          <TwitterCircleFilled />
-        </Space>
-      )}
+      subTitle="最便捷,最快速的人工智能对话"
       contentStyle={{
         width: '100%',
         maxWidth: '340px',
