@@ -25,7 +25,7 @@ import {
   SmileFilled,
   UsergroupAddOutlined,
   WalletFilled,
-  CloudFilled
+  CloudOutlined
 } from '@ant-design/icons'
 
 const web = [
@@ -56,7 +56,7 @@ const web = [
   {
     path: 'https://user.starn.cc',
     name: 'StarCloud',
-    icon: <CloudFilled />,
+    icon: <CloudOutlined />,
     message: 'StarCloud全球云加速'
   }	
 ]
