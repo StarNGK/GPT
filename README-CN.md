@@ -3,25 +3,15 @@
 
 <h1 align="center">ChatGPT Web</h1>
 
-English / [简体中文](https://github.com/79E/ChatGpt-Web/blob/master/README-CN.md)
+English / [简体中文](https://github.com/StarNGK/GPT/blob/master/README-CN.md)
 
 A commercially-viable ChatGpt web application built with React.
 
 可部署商业化的 ChatGpt 网页应用。
 
-[Issues](https://github.com/79E/ChatGPT-Web/issues) / [Buy Me a Coffee](https://www.buymeacoffee.com/beggar) / [赞助我](https://files.catbox.moe/o0znrg.JPG)
-
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=StarNGK/GPT)
 
 </div>
-
-## 🐶 演示
-### 页面链接
-[Web 演示: https://www.aizj.top/](https://www.aizj.top/)
-
-[Admin 演示: https://www.aizj.top/admin](https://www.aizj.top/admin)
-
-如需帮助请提交 [Issues](https://github.com/79E/ChatGPT-Web/issues) 或赞赏时留下联系方式。
 
 ### 页面截图
 
@@ -101,7 +91,7 @@ yarn build
 #### 服务端
 
 1. 前端请求服务端的 [接口文档](https://console-docs.apipost.cn/preview/38826c52f656ef05/044846bd536b67bb) 你们可以按照这个接口文档进行开发
-2. 如需帮助请提交 [Issues](https://github.com/79E/ChatGPT-Web/issues) 或赞赏时留下联系方式。
+2. 如需帮助请提交 [Issues](https://github.com/StarNGK/GPT/issues) 或赞赏时留下联系方式。
 
 ## 🎯 部署
 > 直接将`WEB`项目打包好的 `dist` 目录上传到服务器即可。注意服务器IP地址位置！
@@ -111,12 +101,12 @@ yarn build
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/79E/ChatGpt-Web)
 
-如需帮助请提交 [Issues](https://github.com/79E/ChatGPT-Web/issues) 或赞赏时留下联系方式。
+如需帮助请提交 [Issues](https://github.com/StarNGK/GPT/issues) 或赞赏时留下联系方式。
 
 ## 🧘 贡献者
 
-[见项目贡献者列表](https://github.com/79E/ChatGPT-Web/graphs/contributors)
+[见项目贡献者列表](https://github.com/StarNGK/GPT/graphs/contributors)
 
 ## 📋 开源协议
 
-[![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/79E/ChatGpt-Web/blob/master/license)
+[![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/StarNGK/GPT/blob/master/license)
