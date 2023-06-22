@@ -13,8 +13,6 @@ A commercially-viable ChatGpt web application built with React.
 
 </div>
 
-### 页面截图
-
 ![cover](https://files.catbox.moe/tp963e.png)
 ![cover](https://files.catbox.moe/y5avbx.png)
 ![cover](https://files.catbox.moe/k16jsz.png)
@@ -49,7 +47,7 @@ yarn -v
 
 **1.先 `Fork` 本项目，然后克隆到本地。**
 ```
-git clone https://github.com/79E/ChatGpt-Web.git
+git clone https://github.com/StarNGK/GPT.git
 ```
 
 **2.安装依赖**
@@ -99,7 +97,7 @@ yarn build
 ### Vercel
 如果你将其托管在自己的 Vercel 服务器上，可点击 deploy 按钮来开始你的部署！
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/79E/ChatGpt-Web)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/StarNGK/GPT)
 
 如需帮助请提交 [Issues](https://github.com/StarNGK/GPT/issues) 或赞赏时留下联系方式。
 
