@@ -99,7 +99,7 @@ function AdminPage() {
                 paddingBlockStart: 12
               }}
             >
-              <div>© 2023 Made with love</div>
+              <div>© 2023 StarCloud</div>
               <div>by Chatgpt</div>
             </div>
           )
@@ -120,7 +120,7 @@ function AdminPage() {
         breadcrumbRender={() => []}
         footerRender={() => (
           <DefaultFooter
-            links={[{ key: 'github', title: 'github', href: 'https://github.com/79E/ChatGpt-Web' }]}
+            links={[{ key: 'github', title: 'github', href: 'https://github.com/StarNGK/GPT' }]}
             copyright="ChatGpt"
           />
         )}
