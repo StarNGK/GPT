@@ -54,7 +54,7 @@ const web = [
     message: '账户余额和充值套餐记录'
   },
   {
-    path: '/user',
+    path: 'https://user.starn.cc',
     name: 'StarCloud',
     icon: <CloudFilled />,
     message: 'StarCloud全球云加速'
