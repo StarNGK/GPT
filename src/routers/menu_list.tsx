@@ -24,7 +24,8 @@ import {
   ShopOutlined,
   SmileFilled,
   UsergroupAddOutlined,
-  WalletFilled
+  WalletFilled,
+  CloudFilled
 } from '@ant-design/icons'
 
 const web = [
@@ -51,7 +52,13 @@ const web = [
     name: '邀请',
     icon: <UsergroupAddOutlined />,
     message: '账户余额和充值套餐记录'
-  }
+  },
+  {
+    path: '/user',
+    name: 'StarCloud',
+    icon: <CloudFilled />,
+    message: 'StarCloud全球云加速'
+  }	
 ]
 
 const admin = {
