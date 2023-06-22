@@ -94,6 +94,6 @@
     "vite": "^4.2.0"
   },
   "main": "index.js",
-  "repository": "git@github.com:79E/ChatGpt-Web.git",
+  "repository": "git@github.com:StarNGK/GPT.git",
   "license": "MIT"
 }
