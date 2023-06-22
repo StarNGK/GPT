@@ -20,8 +20,6 @@ A commercially-viable ChatGpt web application built with React.
 ![cover](https://files.catbox.moe/k16jsz.png)
 ![cover](https://files.catbox.moe/8o5oja.png)
 
-![赞赏](https://files.catbox.moe/wgi8v5.png)
-
 ## 🤖 Major Function
 
 - The backend management system can manage users, tokens, products, card passwords, etc
