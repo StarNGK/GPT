@@ -45,19 +45,6 @@ export function LoginCard(props: {
       logo="https://u1.dl0.cn/icon/openailogo.svg"
       title=""
       subTitle="最便捷,快速的人工智能对话"
-      actions={(
-        <Space>
-          <HeartFilled />
-          <RedditCircleFilled />
-          <SlackCircleFilled />
-          <TwitterCircleFilled />
-        </Space>
-      )}
-      contentStyle={{
-        width: '100%',
-        maxWidth: '340px',
-        minWidth: '100px'
-      }}
       submitter={{
         searchConfig: {
           submitText: loginType === 'register' ? '注册&登录' : '登录',
