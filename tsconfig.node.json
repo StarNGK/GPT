@@ -11,6 +11,7 @@
     "strictNullChecks": false,
     "noImplicitThis": true,
     "alwaysStrict": true,
+    "allowJs": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitReturns": true,
