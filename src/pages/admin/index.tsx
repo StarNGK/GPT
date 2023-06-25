@@ -100,7 +100,7 @@ function AdminPage() {
               }}
             >
               <div>© 2023 StarCloud</div>
-              <div>by Chatgpt</div>
+              <div>by StarCloud</div>
             </div>
           )
         }}

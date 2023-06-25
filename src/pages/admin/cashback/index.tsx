@@ -138,7 +138,7 @@ function UserPage() {
               key="pass"
               placement="topRight"
               title="充值真实性判断"
-              description="清判断是否为正常充值！"
+              description="请判断是否为正常充值！"
               onConfirm={() => {
                 putAdminCashbackPass({ id: data.id }).then((res) => {
                   if (res.code) return

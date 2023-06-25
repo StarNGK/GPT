@@ -132,7 +132,7 @@ function InviteRecordPage() {
             <Popconfirm
               placement="topRight"
               title="邀请真实性判断"
-              description="清判断是否为正常邀请,一旦通过奖励不可以收回！"
+              description="请判断是否为正常邀请,一旦通过奖励不可以收回！"
               onConfirm={() => {
                 putAdminInviteRecordPass({ id: data.id }).then((res) => {
                   if (res.code) return
