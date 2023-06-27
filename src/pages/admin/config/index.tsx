@@ -757,7 +757,7 @@ function ConfigPage() {
                 width="xl"
                 name="user"
                 label="邮箱账号"
-                rules={[{ required: true, message: '请输入邮箱账号!' }]}
+                rules={[{ required: true, message: '请输入邮箱帐号!' }]}
               />
               <ProFormText
                 width="xl"
