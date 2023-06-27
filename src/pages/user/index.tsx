@@ -30,7 +30,7 @@ import {
   ProFormText,
   ProFormTextArea
 } from '@ant-design/pro-components'
-import { LockOutlined, MailOutlined } from '@ant-design/icons'
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons'
 import { fetchUserPassword, fetchUserRecords, fetchUserWithdrawal } from '@/store/user/async'
 import { useNavigate } from 'react-router-dom'
 import { ColumnsType } from 'antd/es/table'
@@ -90,11 +90,6 @@ function UserPage() {
         return <Tag>{data.user.account}</Tag>
       }
     },
-    // {
-    //   title: '邀请码',
-    //   dataIndex: 'invite_code',
-    //   key: 'invite_code'
-    // },
     {
       title: '奖励',
       dataIndex: 'reward',
@@ -188,16 +183,6 @@ function UserPage() {
     }
   ]
   const withdrawalRecordColumns: ColumnsType<WithdrawalRecordInfo> = [
-    // {
-    //   title: '姓名',
-    //   dataIndex: 'name',
-    //   key: 'name'
-    // },
-    // {
-    //   title: '联系方式',
-    //   dataIndex: 'contact',
-    //   key: 'contact'
-    // },
     {
       title: '收款方式',
       dataIndex: 'type',
@@ -361,20 +346,6 @@ function UserPage() {
             {/* 用户信息 */}
             <UserInfoCard info={user_info}>
               <div className={styles.userPage_operate}>
-                {/* <Button block
-                                    onClick={() => {
-                                        setUserAccountModal({
-                                            open: true,
-                                            title: '修改账号',
-                                            type: 'account'
-                                        })
-                                        userAccountForm.setFieldsValue({
-                                            account: user_info?.account
-                                        })
-                                    }}
-                                >
-                                    修改账号
-                                </Button> */}
                 <Button
                   block
                   type="dashed"
@@ -591,16 +562,13 @@ function UserPage() {
         <ProFormText
           fieldProps={{
             size: 'large',
-            prefix: <MailOutlined />
+            prefix: <UserOutlined />
           }}
           name="account"
-          placeholder="邮箱"
           disabled
           rules={[
             {
               required: true,
-              message: '请输入电子邮箱',
-              pattern: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
             }
           ]}
         />
@@ -628,15 +596,6 @@ function UserPage() {
           ]}
           onGetCaptcha={async () => {
             const account = userAccountForm.getFieldValue('account')
-            if (!account || !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(account)) {
-              userAccountForm.setFields([
-                {
-                  name: 'account',
-                  errors: ['请输入有效的邮箱地址']
-                }
-              ])
-              return Promise.reject()
-            }
             return new Promise((resolve, reject) =>
               getCode({ source: account })
                 .then(() => resolve())
@@ -655,76 +614,12 @@ function UserPage() {
             rules={[
               {
                 required: true,
-                message: '8位及以上至少包含一个字母和一个数字',
-                pattern: /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+                message: '8位及以上字母数字',
+                pattern: /^(?:[a-zA-Z]{8,}|\d{8,}|(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z\d]{8,})$/
               }
             ]}
           />
         )}
-
-        {/*
-                    {
-                        userAccountModal.type === 'account' && (
-                            <>
-                                <ProFormText
-                                    fieldProps={{
-                                        size: 'large',
-                                        prefix: <MailOutlined />
-                                    }}
-                                    name="new_account"
-                                    placeholder="新邮箱"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: '请输入电子邮箱',
-                                            pattern: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
-                                        }
-                                    ]}
-                                />
-                                <ProFormCaptcha
-                                    fieldProps={{
-                                        size: 'large',
-                                        prefix: <LockOutlined />
-                                    }}
-                                    captchaProps={{
-                                        size: 'large'
-                                    }}
-                                    placeholder="验证码"
-                                    captchaTextRender={(timing, count) => {
-                                        if (timing) {
-                                            return `${count} ${'获取验证码'}`
-                                        }
-                                        return '获取验证码'
-                                    }}
-                                    name="new_code"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: '请输入验证码！'
-                                        }
-                                    ]}
-                                    onGetCaptcha={async () => {
-                                        const new_account = userAccountForm.getFieldValue('new_account')
-                                        if (!new_account || !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(new_account)) {
-                                            userAccountForm.setFields([
-                                                {
-                                                    name: 'new_account',
-                                                    errors: ['请输入有效的邮箱地址']
-                                                }
-                                            ])
-                                            return Promise.reject()
-                                        }
-                                        return new Promise((resolve, reject) =>
-                                            getCode({ source: new_account })
-                                                .then(() => resolve())
-                                                .catch(reject)
-                                        )
-                                    }}
-                                />
-                            </>
-                        )
-                    }
-                */}
       </ModalForm>
 
       <ModalForm<WithdrawalRecordInfo>
