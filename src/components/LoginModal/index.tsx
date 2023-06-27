@@ -2,12 +2,8 @@ import { getCode } from '@/request/api'
 import { userAsync } from '@/store/async'
 import { RequestLoginParams } from '@/types'
 import {
-  HeartFilled,
   LockOutlined,
-  UserOutlined,
-  RedditCircleFilled,
-  SlackCircleFilled,
-  TwitterCircleFilled
+  UserOutlined
 } from '@ant-design/icons'
 import { LoginForm, ProFormCaptcha, ProFormText } from '@ant-design/pro-form'
 import { Form, FormInstance, Modal, Space, Tabs } from 'antd'
@@ -49,7 +45,7 @@ export function LoginCard(props: {
         width: '100%',
         maxWidth: '340px',
         minWidth: '100px'
-      }}	
+      }}
       submitter={{
         searchConfig: {
           submitText: loginType === 'register' ? '注册&登录' : '登录',
@@ -154,8 +150,8 @@ export function LoginCard(props: {
             rules={[
               {
                 required: true,
-                message: '8位及以上至少包含一个字母和一个数字',
-                pattern: /^(?=[a-zA-Z])(?=.*[a-zA-Z\d])[a-zA-Z\d.]{8,}$/
+                message: '8位及以上字母数字',
+                pattern: /^(?:[a-zA-Z]{8,}|\d{8,}|(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z\d]{8,})$/
               },
             ]}
           />
