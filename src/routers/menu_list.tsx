@@ -6,7 +6,7 @@ import {
   ExperimentFilled,
   FileTextFilled,
   GithubFilled,
-  GithubOutlined,
+  GitlabFilled,
   GoldenFilled,
   IdcardFilled,
   InsuranceFilled,
@@ -138,10 +138,15 @@ const admin = {
       path: '/admin_message',
       routes: [
         {
-          path: '/admin/messages',
-          name: '消息列表',
-          icon: <FileTextFilled />
-        }
+          path: '/admin/dialog',
+          name: '内置对话',
+          icon: <GitlabFilled />
+        },
+		{
+			path: '/admin/messages',
+			name: '消息列表',
+			icon: <FileTextFilled />
+		}
       ]
     },
     {
