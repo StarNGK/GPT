@@ -41,6 +41,16 @@ export function LoginCard(props: {
       logo="https://u1.dl0.cn/icon/openailogo.svg"
       title=""
       subTitle="最便捷,快速的人工智能对话"
+      actions={(
+        <div
+          style={{
+            textAlign: 'center',
+            fontSize: 14
+          }}
+        >
+          <p>登录即代表你同意 <a href="./">《平台协议》</a>和<a href="./">《隐私政策》</a> </p>
+        </div>
+      )}
       contentStyle={{
         width: '100%',
         maxWidth: '340px',
