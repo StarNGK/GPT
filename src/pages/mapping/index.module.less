@@ -1,0 +1,27 @@
+.mapping {
+	&_content {
+		width: 100vw;
+		min-height: calc(100vh - 56px);
+		background-color: #fff;
+		position: relative;
+	}
+
+	&_svg {
+		width: 100%;
+		height: calc(74vh - 56px);
+	}
+
+	&_input {
+		position: absolute;
+		width: 100%;
+		max-width: 800px;
+		background-color: #ffffff;
+		bottom: 40px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	[class*='ant-pro-layout-content'] {
+		padding: 0 !important;
+	}
+}
