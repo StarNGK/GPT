@@ -6,6 +6,7 @@ import {
   ExperimentFilled,
   FileTextFilled,
   GithubFilled,
+  GithubOutlined,
   GitlabFilled,
   GoldenFilled,
   IdcardFilled,
@@ -18,14 +19,14 @@ import {
   PictureOutlined,
   ReconciliationFilled,
   RedEnvelopeFilled,
+  RedditCircleFilled,
   ScheduleFilled,
   SettingFilled,
   ShopFilled,
   ShopOutlined,
   SmileFilled,
   UsergroupAddOutlined,
-  WalletFilled,
-  CloudOutlined
+  WalletFilled
 } from '@ant-design/icons'
 
 const web = [
@@ -42,6 +43,12 @@ const web = [
     message: '利用智能AI绘画出图片'
   },
   {
+    path: '/mapping',
+    name: '思维导图',
+    icon: <PictureOutlined />,
+    message: '利用智能AI生成思维导图'
+  },
+  {
     path: '/shop',
     name: '商城',
     icon: <ShopOutlined />,
@@ -54,10 +61,10 @@ const web = [
     message: '账户余额和充值套餐记录'
   },
   {
-    path: 'https://user.starn.cc',
-    name: 'StarCloud',
-    icon: <CloudOutlined />,
-    message: 'StarCloud全球云加速'
+    path: 'https://github.com/79E/ChatGpt-Web',
+    name: '项目地址',
+    icon: <GithubOutlined />,
+    message: '免费开源可商业化AiWeb项目'
   }
 ]
 
@@ -143,6 +150,11 @@ const admin = {
           icon: <GitlabFilled />
         },
 		{
+			path: '/admin/persona',
+			name: '角色配置',
+			icon: <RedditCircleFilled />
+		},
+		{
 			path: '/admin/messages',
 			name: '消息列表',
 			icon: <FileTextFilled />
@@ -182,7 +194,7 @@ const admin = {
       icon: <SettingFilled />
     },
     {
-      path: 'https://github.com/StarNGK/GPT',
+      path: 'https://github.com/79E/ChatGpt-Web',
       name: 'Github',
       icon: <GithubFilled />
     }

@@ -757,13 +757,13 @@ function ConfigPage() {
                 width="xl"
                 name="user"
                 label="邮箱账号"
-                rules={[{ required: true, message: '请输入邮箱帐号!' }]}
+                rules={[{ required: true, message: '请输入短信签名!' }]}
               />
               <ProFormText
                 width="xl"
                 name="pass"
                 label="邮箱密码"
-                rules={[{ required: true, message: '请输入邮箱密码!' }]}
+                rules={[{ required: true, message: '请输入短信签名!' }]}
               />
               <ProFormText width="xl" name="from_title" label="发件用户名称" />
               <ProFormText width="xl" name="subject" label="邮件标题" />

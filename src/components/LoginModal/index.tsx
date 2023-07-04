@@ -2,11 +2,15 @@ import { getCode } from '@/request/api'
 import { userAsync } from '@/store/async'
 import { RequestLoginParams } from '@/types'
 import {
+  HeartFilled,
   LockOutlined,
-  UserOutlined
+  UserOutlined,
+  RedditCircleFilled,
+  SlackCircleFilled,
+  TwitterCircleFilled
 } from '@ant-design/icons'
 import { LoginForm, ProFormCaptcha, ProFormText } from '@ant-design/pro-form'
-import { Form, FormInstance, Modal, Space, Tabs } from 'antd'
+import { Button, Form, FormInstance, Modal, Space, Tabs } from 'antd'
 import { useState } from 'react'
 import { useNavigation, useLocation } from 'react-router-dom'
 
@@ -33,6 +37,7 @@ export function LoginCard(props: {
 
   const { type = 'password' } = props;
 
+  const [loginTabsValue, setLoginTabsValue] = useState<LoginType>('login');
   const [loginType, setLoginType] = useState<LoginType>(type);
 
   return (
@@ -40,7 +45,7 @@ export function LoginCard(props: {
       form={props.form}
       logo="https://u1.dl0.cn/icon/openailogo.svg"
       title=""
-      subTitle="最便捷,快速的人工智能对话"
+      subTitle="基于大语言模型的AI对话产品"
       actions={(
         <div
           style={{
@@ -48,7 +53,7 @@ export function LoginCard(props: {
             fontSize: 14
           }}
         >
-          <p>登录即代表你同意 <a href="./">《平台协议》</a>和<a href="./">《隐私政策》</a> </p>
+          <p>登录即代表你同意 <a href="https://www.baidu.com/">《平台协议》</a>和<a href="https://www.baidu.com/">《隐私政策》</a> </p>
         </div>
       )}
       contentStyle={{
@@ -81,22 +86,21 @@ export function LoginCard(props: {
     >
       <Tabs
         centered
-        activeKey={loginType}
+        activeKey={loginTabsValue}
         onChange={(activeKey) => {
-          setLoginType(activeKey)
+          props.form.resetFields()
+          const type = activeKey === 'login' ? 'password' : activeKey
+          setLoginType(type)
+          setLoginTabsValue(activeKey)
         }}
         items={[
           {
-            key: 'password',
-            label: '密码登录',
-          },
-          {
-            key: 'code',
-            label: '验证码登录',
+            key: 'login',
+            label: '账户登录',
           },
           {
             key: 'register',
-            label: '注册账号',
+            label: '注册账户',
           },
         ]}
       />
@@ -167,21 +171,30 @@ export function LoginCard(props: {
           />
         )
       }
-      {/* <ProFormText
-        name="invite_code"
-        fieldProps={{
-          size: 'large',
-          prefix: <LockOutlined className={'prefixIcon'} />,
-        }}
-        placeholder="请输入密码"
-        rules={[
-          {
-            required: true,
-            message: '8位及以上至少包含一个字母和一个数字',
-            pattern: /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
-          },
-        ]}
-      /> */}
+      <div style={{ textAlign: 'right' }}>
+        {
+          (loginTabsValue === 'login' && loginType === 'code') && (
+            <Button type="link" onClick={() => {
+              props.form.resetFields()
+              setLoginType('password')
+            }}
+            >
+              密码登录
+            </Button>
+          )
+        }
+        {
+          (loginTabsValue === 'login' && loginType === 'password') && (
+            <Button type="link" onClick={() => {
+              props.form.resetFields()
+              setLoginType('code')
+            }}
+            >
+              验证码登录
+            </Button>
+          )
+        }
+      </div>
       <div
         style={{
           marginBlockEnd: 24
