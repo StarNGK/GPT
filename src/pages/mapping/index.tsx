@@ -3,9 +3,10 @@ import { Transformer } from 'markmap-lib'
 import { Markmap } from 'markmap-view'
 import Layout from '@/components/Layout'
 import styles from './index.module.less'
-import { Button, Input, Space } from 'antd'
+import { Button, Input, Space, message } from 'antd'
 import { postChatCompletion } from '@/request/api'
-import { handleChatData } from '@/utils'
+import { handleChatData, htmlToImage, textToMdFile } from '@/utils'
+import { FileImageOutlined, FileMarkdownOutlined } from '@ant-design/icons'
 
 const initValue = `# ChatGptWeb系统
 ## 基础功能
@@ -32,7 +33,6 @@ function MappingPage() {
     loading: false
   })
 
-
   useEffect(() => {
     if (refSvg && refSvg.current && !refMm.current) {
       const mm = Markmap.create(refSvg.current)
@@ -50,25 +50,26 @@ function MappingPage() {
     }
   }, [refMm.current, value])
 
-
   async function onFetchChat() {
-    setInputOptions(i => ({ ...i, loading: true }))
+    setInputOptions((i) => ({ ...i, loading: true }))
     const response = await postChatCompletion({
       prompt: inputOptions.value,
       type: 'mapping'
-    }).then((res) => {
-      return res
-    }).catch((error) => {
-      setInputOptions(i => ({ ...i, loading: false }))
-      return error
     })
+      .then((res) => {
+        return res
+      })
+      .catch((error) => {
+        setInputOptions((i) => ({ ...i, loading: false }))
+        return error
+      })
 
     const reader = response.body?.getReader?.()
     let allContent = ''
     while (true) {
       const { done = true, value } = (await reader?.read()) || {}
       if (done) {
-        setInputOptions(i => ({ ...i, loading: false }))
+        setInputOptions((i) => ({ ...i, loading: false }))
         break
       }
       // 将获取到的数据片段显示在屏幕上
@@ -79,7 +80,7 @@ function MappingPage() {
         const { content, segment } = texts[i]
         allContent += content ? content : ''
         if (segment === 'stop') {
-          setInputOptions(i => ({ ...i, loading: false }))
+          setInputOptions((i) => ({ ...i, loading: false }))
           break
         }
 
@@ -93,39 +94,68 @@ function MappingPage() {
     }
   }
 
+  function onExportImage() {
+    htmlToImage('mind-mapping-wrapper')
+      .then(() => {
+        message.success('下载成功')
+      })
+      .catch(() => {
+        message.error('下载失败')
+      })
+  }
+
+  function onExportMd() {
+    if (!value) {
+      message.warning('暂无数据导出')
+      return
+    }
+    textToMdFile(value)
+      .then(() => {
+        message.success('下载成功')
+      })
+      .catch(() => {
+        message.error('下载失败')
+      })
+  }
+
   return (
     <div className={styles.mapping}>
       <Layout>
         <div className={styles.mapping_content}>
-          <svg className={styles.mapping_svg} ref={refSvg} />
+          <div id="mind-mapping-wrapper">
+            <svg className={styles.mapping_svg} ref={refSvg} />
+          </div>
           <div className={styles.mapping_input}>
             <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-              {/* <div>
-              <Space>
-                <Button type="link">导出MD</Button>
-                <Button type="link">导出图片</Button>
-              </Space>
-            </div> */}
               <Input.TextArea
                 autoSize={{
                   minRows: 6,
-                  maxRows: 6,
+                  maxRows: 6
                 }}
                 placeholder="请输入你想要生成的内容描述，AI会为你生成一份思维导图！"
                 onChange={(e) => {
-                  setInputOptions(i => ({ ...i, value: e.target.value, }))
+                  setInputOptions((i) => ({ ...i, value: e.target.value }))
                 }}
               />
-              <Button
-                block
-                type="primary"
-                size="large"
-                disabled={!inputOptions.value}
-                loading={inputOptions.loading}
-                onClick={onFetchChat}
-              >
-                智能生成生成思维导图
-              </Button>
+
+              <div className={styles.mapping_exports}>
+                <div onClick={onExportMd}>
+                  <FileMarkdownOutlined /> 导出MD
+                </div>
+                <div onClick={onExportImage}>
+                  <FileImageOutlined /> 导出图片
+                </div>
+                <Button
+                  block
+                  type="primary"
+                  size="large"
+                  disabled={!inputOptions.value}
+                  loading={inputOptions.loading}
+                  onClick={onFetchChat}
+                >
+                  智能生成生成思维导图
+                </Button>
+              </div>
             </Space>
           </div>
         </div>
