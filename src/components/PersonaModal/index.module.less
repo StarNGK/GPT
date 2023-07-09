@@ -1,0 +1,167 @@
+.persona {
+	&_operate{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		p {
+			font-size: 14px;
+			font-weight: 500;
+		}
+	}
+	&_list{
+		width: 100%;
+		height: 600px;
+		overflow: auto;
+		&::-webkit-scrollbar {
+			width: 0px;
+		}
+
+		&_empty{
+			padding-top: 150px;
+		}
+		display: grid;
+  		grid-template-columns: 1fr 1fr; /* 平均分配两列 */
+  		grid-gap: 10px; /* 列之间的间隔 */
+	}
+	@media (max-width: 600px) {
+		&_list {
+		  grid-template-columns: 1fr; /* 宽度不够时变为一列布局 */
+		}
+	  }
+	&_card{
+		box-sizing: border-box;
+		padding: 8px 12px;
+		border: 1px solid #dedede;
+		max-height: 132px;
+		border-radius: 12px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		&_header{
+			display: flex;
+			align-items: center;
+		}
+		&_icon{
+			height: 36px;
+			min-height: 36px;
+			width: 36px;
+			min-width: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid #dedede;
+			box-shadow: 0px 2px 4px 0px rgba(0,0,0,.05);
+			border-radius: 12px;
+		}
+		&_text{
+			margin-left: 12px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			p{
+				font-weight: 500;
+				font-size: 14px;
+				color: #333;
+				line-height: 1;
+			}
+			span {
+				width: 100%;
+				max-width: 500px;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+				margin-top: 4px;
+				font-size: 12px;
+				color: #999;
+				line-height: 1;
+			}
+		}
+		&_description{
+			margin: 8px 0;
+			font-size: 12px;
+			color: #999;
+			display: -webkit-box;
+			-webkit-line-clamp: 2; /* 设置最大显示行数为 2 */
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis; /* 超出部分显示省略号 */
+		}
+		&_button{
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-left: auto;
+			p {
+				border: 1px solid #bbb;
+				padding: 0px 10px 0px 6px;
+				cursor: pointer;
+				background-color: rgba(255, 255, 255, 0);
+				font-size: 12px;
+				border-radius: 50px;
+				transition: background-color 0.3s ease-in-out;
+				&:hover{
+					background-color: #ddd;
+				}
+				span{
+					margin-left: 4px;
+				}
+			}
+		}
+		&_footer{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			&_userInfo{
+				display: flex;
+				align-items: center;
+				img{
+					width: 20px;
+					height: 20px;
+					border-radius: 50px;
+				}
+				span{
+					margin-left: 4px;
+					font-size: 12px;
+					color: #333;
+				}
+			}
+		}
+	}
+
+
+
+}
+
+
+
+.emojiForm {
+	width: 60px;
+	height: 112px;
+	&_label{
+		height: 40px;
+		display: flex;
+		align-items: center;
+		font-size: 14px;
+		&::before {
+			display: inline-block;
+			margin-inline-end: 4px;
+			color: #ff4d4f;
+			font-size: 14px;
+			font-family: SimSun,sans-serif;
+			line-height: 1;
+			content: "*";
+		}
+		padding-bottom: 8px;
+	}
+	&_card{
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #d9d9d9;
+		border-radius: 8px;
+	}
+}
