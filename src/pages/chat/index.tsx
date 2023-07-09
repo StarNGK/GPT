@@ -1,9 +1,7 @@
 import {
   CommentOutlined,
   DeleteOutlined,
-  GitlabFilled,
-  RedditCircleFilled,
-  RedditSquareFilled
+  RedditCircleFilled
 } from '@ant-design/icons'
 import { Button, Modal, Popconfirm, Space, Tabs, Select, message, Badge } from 'antd'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
@@ -33,13 +31,11 @@ function ChatPage() {
   const {
     chats,
     addChat,
-    delChat,
     clearChats,
     selectChatId,
     changeSelectChatId,
     setChatInfo,
     setChatDataInfo,
-    clearChatMessage,
     delChatMessage
   } = chatStore()
 
