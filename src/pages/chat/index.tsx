@@ -23,7 +23,7 @@ import { useScroll } from '@/hooks/useScroll'
 import useDocumentResize from '@/hooks/useDocumentResize'
 import Layout from '@/components/Layout'
 import useMobile from '@/hooks/useMobile'
-import PersonaModal from '@/components/personaModal'
+import PersonaModal from '@/components/PersonaModal'
 
 function ChatPage() {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -351,7 +351,7 @@ function ChatPage() {
                   // setChatConfigModal({ open: true })
                 }}
               >
-                系统配置
+                会话配置
               </Button>
               <Popconfirm
                 title="删除全部对话"

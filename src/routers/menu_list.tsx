@@ -27,7 +27,7 @@ import {
   UsergroupAddOutlined,
   WalletFilled,
   CloudOutlined,
-  AreaChartOutlined	
+  AreaChartOutlined
 } from '@ant-design/icons'
 
 const web = [
@@ -194,7 +194,7 @@ const admin = {
       name: '系统配置',
       icon: <SettingFilled />
     },
-    {
+     {
       path: 'https://github.com/StarNGK/GPT',
       name: 'Github',
       icon: <GithubFilled />
@@ -205,4 +205,4 @@ const admin = {
 export default {
   web,
   admin
-}	
+}

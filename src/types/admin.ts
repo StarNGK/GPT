@@ -109,6 +109,7 @@ export interface AikeyInfo {
   limit: number
   usage: number
   type: string
+  check: number
   status: number
   create_time: string
   update_time: string
@@ -281,6 +282,7 @@ export interface PersonaInfo {
 	title: string;
 	emoji: string;
 	description?: string;
+  system: number
 	context: string;
 	status: number;
 	create_time: string;

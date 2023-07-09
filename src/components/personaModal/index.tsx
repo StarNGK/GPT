@@ -1,6 +1,7 @@
 import { personaAsync } from '@/store/async'
 import {
   Avatar,
+  Badge,
   Button,
   Empty,
   Form,
@@ -9,6 +10,7 @@ import {
   Pagination,
   Popover,
   Space,
+  Tag,
   message
 } from 'antd'
 import { useEffect, useMemo, useState } from 'react'
@@ -26,11 +28,12 @@ import {
 } from '@ant-design/pro-components'
 import { postPersona } from '@/request/api'
 import { userStore } from '@/store'
+import { getEmailPre } from '@/utils'
 
 type Props = {
   open: boolean
   onCreateChat: (item: PersonaInfo) => void
-  onCancel: ()=>void
+  onCancel: () => void
 }
 
 function PersonaModal(props: Props) {
@@ -70,7 +73,7 @@ function PersonaModal(props: Props) {
             <Space wrap>
               <Button
                 type="primary"
-				disabled={!token}
+                disabled={!token}
                 onClick={() => {
                   setEditInfoModal({
                     info: {
@@ -95,45 +98,56 @@ function PersonaModal(props: Props) {
             {countPersonas.map((item) => {
               return (
                 <div className={styles.persona_card} key={item.id}>
-                  <div className={styles.persona_card_icon}>
-                    <Emoji unified={item.emoji} size={24} />
-                  </div>
-                  <div className={styles.persona_card_text}>
-                    <p>
-                      {item.title} <span>{item.user?.account.split('@')[0]}</span>{' '}
-                    </p>
-                    <span>
-                      包含 {JSON.parse(item.context).length} 条预设对话{' '}
-                      {item.description ? `/ ${item.description}` : ''}
-                    </span>
-                  </div>
-                  <div className={styles.persona_card_button}>
-                    <p
-                      onClick={() => {
-                        props.onCreateChat?.(item)
-                      }}
+                  <div className={styles.persona_card_header}>
+                    <Badge
+                      dot
+                      color={
+                        item.status === 1 ? 'transparent' : item.status === 4 ? 'orange' : 'red'
+                      }
                     >
-                      <PlusCircleOutlined />
-                      <span>对话</span>
-                    </p>
-                    <p
-                      onClick={() => {
-                        setEditInfoModal(() => {
-                          form.setFieldsValue({
-                            ...item,
-                            context: JSON.parse(item.context)
+                      <div className={styles.persona_card_icon}>
+                        <Emoji unified={item.emoji} size={24} />
+                      </div>
+                    </Badge>
+                    <div className={styles.persona_card_text}>
+                      <p>{item.title}</p>
+                      <span>包含 {JSON.parse(item.context).length} 条预设对话</span>
+                    </div>
+                  </div>
+                  <p className={styles.persona_card_description}>{item.description}</p>
+                  <div className={styles.persona_card_footer}>
+                    <div className={styles.persona_card_footer_userInfo}>
+                      {item.user?.avatar && <img src={item.user?.avatar} alt="" />}
+                      <span>{getEmailPre(item.user?.account)}</span>
+                    </div>
+                    <div className={styles.persona_card_button}>
+                      <p
+                        onClick={() => {
+                          props.onCreateChat?.(item)
+                        }}
+                      >
+                        <PlusCircleOutlined />
+                        <span>对话</span>
+                      </p>
+                      <p
+                        onClick={() => {
+                          setEditInfoModal(() => {
+                            form.setFieldsValue({
+                              ...item,
+                              context: JSON.parse(item.context)
+                            })
+                            return {
+                              open: true,
+                              info: item,
+                              disabled: true
+                            }
                           })
-                          return {
-                            open: true,
-                            info: item,
-                            disabled: true
-                          }
-                        })
-                      }}
-                    >
-                      <EyeOutlined />
-                      <span>查看</span>
-                    </p>
+                        }}
+                      >
+                        <EyeOutlined />
+                        <span>查看</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               )

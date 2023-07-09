@@ -231,7 +231,8 @@ function PersonaPage() {
         open={edidInfoModal.open}
         form={form}
         initialValues={{
-          status: 1
+          status: 1,
+          system: 0
         }}
         onOpenChange={(visible) => {
           if (!visible) {
@@ -357,6 +358,22 @@ function PersonaPage() {
                 label: '审核中',
                 value: 4
               }
+            ]}
+            rules={[{ required: true }]}
+          />
+          <ProFormRadio.Group
+            name="system"
+            label="角色级别"
+            radioType="button"
+            options={[
+              {
+                label: '用户',
+                value: 0
+              },
+              {
+                label: '系统级',
+                value: 1
+              },
             ]}
             rules={[{ required: true }]}
           />
