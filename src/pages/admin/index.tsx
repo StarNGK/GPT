@@ -102,7 +102,7 @@ function AdminPage() {
               }}
             >
               <div>© 2023 Made with love</div>
-              <div>by StarNGK</div>
+              <div>by Chatgpt</div>
             </div>
           )
         }}
@@ -122,8 +122,8 @@ function AdminPage() {
         breadcrumbRender={() => []}
         footerRender={() => (
           <DefaultFooter
-            links={[{ key: 'github', title: 'github', href: 'https://github.com/StarNGK/GPT' }]}
-            copyright="StarNGK"
+            links={[{ key: 'github', title: 'github', href: 'https://github.com/79E/ChatGpt-Web' }]}
+            copyright="ChatGpt"
           />
         )}
       >

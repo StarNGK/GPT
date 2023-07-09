@@ -2,13 +2,17 @@ import { getCode } from '@/request/api'
 import { userAsync } from '@/store/async'
 import { RequestLoginParams } from '@/types'
 import {
+  HeartFilled,
   LockOutlined,
-  UserOutlined
+  UserOutlined,
+  RedditCircleFilled,
+  SlackCircleFilled,
+  TwitterCircleFilled
 } from '@ant-design/icons'
 import { LoginForm, ProFormCaptcha, ProFormText } from '@ant-design/pro-form'
 import { Button, Form, FormInstance, Modal, Space, Tabs } from 'antd'
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useNavigation, useLocation } from 'react-router-dom'
 
 type Props = {
   open: boolean
@@ -41,7 +45,7 @@ export function LoginCard(props: {
       form={props.form}
       logo="https://u1.dl0.cn/icon/openailogo.svg"
       title=""
-      subTitle="最便捷,快速的人工智能对话"
+      subTitle="基于大语言模型的AI对话产品"
       actions={(
         <div
           style={{
@@ -49,7 +53,7 @@ export function LoginCard(props: {
             fontSize: 14
           }}
         >
-          <p>登录即代表你同意 <a href="./">《平台协议》</a>和<a href="./">《隐私政策》</a> </p>
+          <p>登录即代表你同意 <a href="https://www.baidu.com/">《平台协议》</a>和<a href="https://www.baidu.com/">《隐私政策》</a> </p>
         </div>
       )}
       contentStyle={{
