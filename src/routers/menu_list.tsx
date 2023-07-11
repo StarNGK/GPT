@@ -26,7 +26,6 @@ import {
   SmileFilled,
   UsergroupAddOutlined,
   WalletFilled,
-  CloudOutlined,
   AreaChartOutlined
 } from '@ant-design/icons'
 
@@ -61,12 +60,6 @@ const web = [
     icon: <UsergroupAddOutlined />,
     message: '账户余额和充值套餐记录'
   },
-  {
-    path: 'https://user.starn.cc',
-    name: 'StarCloud',
-    icon: <CloudOutlined />,
-    message: 'StarCloud全球云加速'
-  }
 ]
 
 const admin = {
