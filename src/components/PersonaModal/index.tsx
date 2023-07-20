@@ -1,23 +1,26 @@
 import { personaAsync } from '@/store/async'
 import {
+  Avatar,
   Badge,
   Button,
   Empty,
   Form,
   Input,
   Modal,
+  Pagination,
   Popover,
   Space,
+  Tag,
   message
 } from 'antd'
 import { useEffect, useMemo, useState } from 'react'
 import styles from './index.module.less'
 import personaStore from '@/store/persona/slice'
-import EmojiPicker, { Emoji } from 'emoji-picker-react'
-import { EyeOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import { EyeOutlined, PlusCircleOutlined, QuestionOutlined } from '@ant-design/icons'
 import { PersonaInfo } from '@/types'
 import {
   ModalForm,
+  ProFormDependency,
   ProFormGroup,
   ProFormList,
   ProFormSelect,
@@ -26,6 +29,7 @@ import {
 import { postPersona } from '@/request/api'
 import { userStore } from '@/store'
 import { getEmailPre } from '@/utils'
+import AppCard from '../appCard'
 
 type Props = {
   open: boolean
@@ -94,59 +98,42 @@ function PersonaModal(props: Props) {
           <div className={styles.persona_list}>
             {countPersonas.map((item) => {
               return (
-                <div className={styles.persona_card} key={item.id}>
-                  <div className={styles.persona_card_header}>
-                    <Badge
-                      dot
-                      color={
-                        item.status === 1 ? 'transparent' : item.status === 4 ? 'orange' : 'red'
-                      }
+                <AppCard
+                  key={item.id}
+                  {...item}
+                  userInfo={item.user}
+				  message={`包含 ${JSON.parse(item.context).length} 条预设对话`}
+                  buttons={[
+                    <p
+                      key="duihua"
+                      onClick={() => {
+                        props.onCreateChat?.(item)
+                      }}
                     >
-                      <div className={styles.persona_card_icon}>
-                        <Emoji unified={item.emoji} size={24} />
-                      </div>
-                    </Badge>
-                    <div className={styles.persona_card_text}>
-                      <p>{item.title}</p>
-                      <span>包含 {JSON.parse(item.context).length} 条预设对话</span>
-                    </div>
-                  </div>
-                  <p className={styles.persona_card_description}>{item.description}</p>
-                  <div className={styles.persona_card_footer}>
-                    <div className={styles.persona_card_footer_userInfo}>
-                      {item.user?.avatar && <img src={item.user?.avatar} alt="" />}
-                      <span>{getEmailPre(item.user?.account)}</span>
-                    </div>
-                    <div className={styles.persona_card_button}>
-                      <p
-                        onClick={() => {
-                          props.onCreateChat?.(item)
-                        }}
-                      >
-                        <PlusCircleOutlined />
-                        <span>对话</span>
-                      </p>
-                      <p
-                        onClick={() => {
-                          setEditInfoModal(() => {
-                            form.setFieldsValue({
-                              ...item,
-                              context: JSON.parse(item.context)
-                            })
-                            return {
-                              open: true,
-                              info: item,
-                              disabled: true
-                            }
+                      <PlusCircleOutlined />
+                      <span>对话</span>
+                    </p>,
+                    <p
+                      key="chakan"
+                      onClick={() => {
+                        setEditInfoModal(() => {
+                          form.setFieldsValue({
+                            ...item,
+                            context: JSON.parse(item.context)
                           })
-                        }}
-                      >
-                        <EyeOutlined />
-                        <span>查看</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                          return {
+                            open: true,
+                            info: item,
+                            disabled: true
+                          }
+                        })
+                      }}
+                    >
+                      <EyeOutlined />
+                      <span>查看</span>
+                    </p>
+                  ]}
+                />
               )
             })}
             <div className={styles.persona_list_empty}>
@@ -188,8 +175,7 @@ function PersonaModal(props: Props) {
           const context = JSON.stringify(data.context)
           const res = await postPersona({
             ...data,
-            context,
-            emoji: edidInfoModal.info?.emoji || ''
+            context
           })
           if (res.code) {
             message.error('提交失败')
@@ -226,40 +212,44 @@ function PersonaModal(props: Props) {
           </ProFormGroup>
         </ProFormList>
         <ProFormGroup>
-          <div className={styles.emojiForm}>
-            <div className={styles.emojiForm_label}>
-              <label>表情</label>
-            </div>
-            <Popover
-              content={(
-                <EmojiPicker
-                  onEmojiClick={(e) => {
-                    setEditInfoModal((allinfo) => ({
-                      ...allinfo,
-                      info: {
-                        ...allinfo.info,
-                        emoji: e.unified
-                      } as any
-                    }))
-                  }}
-                />
-              )}
-              trigger="click"
-            >
-              <div className={styles.emojiForm_card}>
-                <Emoji unified={edidInfoModal.info?.emoji || ''} />
-              </div>
-            </Popover>
-          </div>
+          <ProFormDependency name={['avatar']}>
+            {({ avatar }) => {
+              return (
+                <div className={styles.emojiForm}>
+                  <div className={styles.emojiForm_label}>
+                    <label>头像</label>
+                  </div>
+                  <div className={styles.emojiForm_card}>
+                    {avatar ? (
+                      <img
+                        src={avatar}
+                        style={{
+                          width: '100%'
+                        }}
+                      />
+                    ) : (
+                      <QuestionOutlined />
+                    )}
+                  </div>
+                </div>
+              )
+            }}
+          </ProFormDependency>
           <ProFormText
             width="md"
+            name="avatar"
+            label="头像地址"
+            placeholder="请输入头像链接地址"
+            rules={[{ required: true, message: '请输入头像链接地址' }]}
+          />
+          <ProFormText
             name="title"
             label="标题"
             placeholder="标题"
             rules={[{ required: true, message: '请输入角色标题' }]}
           />
-          <ProFormText name="description" label="描述" placeholder="描述" />
         </ProFormGroup>
+        <ProFormText name="description" label="描述" placeholder="描述" />
       </ModalForm>
     </div>
   )
