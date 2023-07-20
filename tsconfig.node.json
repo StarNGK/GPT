@@ -6,7 +6,6 @@
     "sourceMap": true,
     "outDir": "build",
     "importHelpers": true,
-	"allowJs": true, 
     "strict": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
