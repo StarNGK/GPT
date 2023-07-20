@@ -1,7 +1,7 @@
 {
   "name": "StarCloud-ChatGPT",
   "private": false,
-  "version": "1.3.7",
+  "version": "1.3.9",
   "description": "基于OpenAI的ChatGpt应用,为您提供更快速,更便捷,更完善,更智能的AI解答服务！",
   "author": "StarNGK",
   "keywords": [
@@ -10,11 +10,11 @@
     "chatbot",
     "ai",
     "open",
-	"openai",
-	"国内gpt",
-	"ai创作",
-	"ai解答", 
-	"ai编程",    
+	  "openai",
+	  "国内gpt",
+	  "ai创作",
+	  "ai解答",
+	  "ai编程",
     "react"
   ],
   "scripts": {
