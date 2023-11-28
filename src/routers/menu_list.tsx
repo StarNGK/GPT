@@ -8,7 +8,6 @@ import {
   FileImageFilled,
   FileTextFilled,
   GithubFilled,
-  GithubOutlined,
   GitlabFilled,
   GoldenFilled,
   IdcardFilled,
@@ -62,12 +61,6 @@ const web = [
     name: '邀请',
     icon: <UsergroupAddOutlined />,
     message: '账户余额和充值套餐记录'
-  },
-  {
-    path: 'https://github.com/79E/ChatGpt-Web',
-    name: '项目地址',
-    icon: <GithubOutlined />,
-    message: '免费开源可商业化AiWeb项目'
   }
 ]
 
@@ -207,7 +200,7 @@ const admin = {
       icon: <SettingFilled />
     },
     {
-      path: 'https://github.com/79E/ChatGpt-Web',
+      path: 'https://github.com/StarNGK/GPT',
       name: 'Github',
       icon: <GithubFilled />
     }
