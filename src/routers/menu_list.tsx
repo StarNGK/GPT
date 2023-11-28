@@ -3,10 +3,12 @@ import {
   CommentOutlined,
   ContactsFilled,
   CrownFilled,
-  DropboxCircleFilled,	
+  DropboxCircleFilled,
   ExperimentFilled,
+  FileImageFilled,
   FileTextFilled,
   GithubFilled,
+  GithubOutlined,
   GitlabFilled,
   GoldenFilled,
   IdcardFilled,
@@ -17,6 +19,7 @@ import {
   MoneyCollectFilled,
   NotificationFilled,
   PictureOutlined,
+  RadarChartOutlined,
   ReconciliationFilled,
   RedEnvelopeFilled,
   RedditCircleFilled,
@@ -26,8 +29,7 @@ import {
   ShopOutlined,
   SmileFilled,
   UsergroupAddOutlined,
-  WalletFilled,
-  AreaChartOutlined
+  WalletFilled
 } from '@ant-design/icons'
 
 const web = [
@@ -46,7 +48,7 @@ const web = [
   {
     path: '/mapping',
     name: '思维导图',
-    icon: <AreaChartOutlined />,
+    icon: <RadarChartOutlined />,
     message: '利用智能AI生成思维导图'
   },
   {
@@ -60,6 +62,12 @@ const web = [
     name: '邀请',
     icon: <UsergroupAddOutlined />,
     message: '账户余额和充值套餐记录'
+  },
+  {
+    path: 'https://github.com/79E/ChatGpt-Web',
+    name: '项目地址',
+    icon: <GithubOutlined />,
+    message: '免费开源可商业化AiWeb项目'
   }
 ]
 
@@ -135,7 +143,7 @@ const admin = {
       ]
     },
     {
-      name: '会话管理',
+      name: '功能性管理',
       icon: <MessageFilled />,
       path: '/admin_message',
       routes: [
@@ -144,21 +152,26 @@ const admin = {
           name: '内置对话',
           icon: <GitlabFilled />
         },
-		{
-			path: '/admin/persona',
-			name: '角色配置',
-			icon: <RedditCircleFilled />
-		},
-		{
-			path: '/admin/plugin',
-			name: '插件管理',
-			icon: <DropboxCircleFilled />
-		},		  
-		{
-			path: '/admin/messages',
-			name: '消息列表',
-			icon: <FileTextFilled />
-		}
+        {
+          path: '/admin/persona',
+          name: '角色配置',
+          icon: <RedditCircleFilled />
+        },
+        {
+          path: '/admin/plugin',
+          name: '插件管理',
+          icon: <DropboxCircleFilled />
+        },
+        {
+          path: '/admin/messages',
+          name: '消息列表',
+          icon: <FileTextFilled />
+        },
+        {
+          path: '/admin/draw',
+          name: '绘画列表',
+          icon: <FileImageFilled />
+        },
       ]
     },
     {
@@ -193,8 +206,8 @@ const admin = {
       name: '系统配置',
       icon: <SettingFilled />
     },
-     {
-      path: 'https://github.com/StarNGK/GPT',
+    {
+      path: 'https://github.com/79E/ChatGpt-Web',
       name: 'Github',
       icon: <GithubFilled />
     }
