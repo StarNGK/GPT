@@ -272,16 +272,36 @@ ${JSON.stringify(response, null, 4)}
         menuDataRender={(item) => {
           return item
         }}
-        menuItemRender={(item, dom) => (
-          <MessageItem
-            isSelect={item.id === selectChatId}
-            isPersona={!!item.persona_id}
-            name={item.name}
-            onConfirm={() => {
-              chatAsync.fetchDelUserMessages({ id: item.id, type: 'del' })
-            }}
-          />
-        )}
+       menuItemRender={(item, dom) => {
+          const className =
+            item.id === selectChatId
+              ? `${styles.menuItem} ${styles.menuItem_action}`
+              : styles.menuItem
+          return (
+            <div className={className}>
+              <span className={styles.menuItem_icon}>
+                <CommentOutlined />
+              </span>
+              <span className={styles.menuItem_name}>{item.name}</span>
+              <div className={styles.menuItem_options}>
+                <Popconfirm
+                  title="删除会话"
+                  description="是否确定删除会话？"
+                  onConfirm={() => {
+                    delChat(item.id)
+                  }}
+                  onCancel={() => {
+                    // ==== 无操作 ====
+                  }}
+                  okText="是"
+                  cancelText="否"
+                >
+                  <DeleteOutlined />
+                </Popconfirm>
+              </div>
+            </div>
+          )
+        }}
         menuFooterRender={(props) => {
           //   if (props?.collapsed) return undefined;
           return (
