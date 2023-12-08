@@ -36,7 +36,6 @@ function Layout(props: Props) {
             fixSiderbar
             headerRender={HeaderRender}
             contentStyle={{
-                height: 'calc(100vh - 56px)',
                 background: '#fff'
             }}
             siderMenuType="group"
