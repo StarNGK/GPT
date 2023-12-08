@@ -387,13 +387,11 @@ ${JSON.stringify(response, null, 4)}
                 )
               })}
               {chatMessages.length <= 0 && <Reminder />}
- <div style={{ height: 80 }} />
+              <div style={{ height: 80 }} />
             </div>
           </div>
-    <div
-            className={styles.chatPage_container_two}
-            style={{
-              position: isMobile ? 'fixed' : 'absolute'
+    <div className={styles.chatPage_container_two} style={{
+position: isMobile ? 'fixed' : 'absolute'
             }}
           >
             <AllInput
