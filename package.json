@@ -18,7 +18,6 @@
   "react"
 ],
   "scripts": {
-    "tsc": "tsc -p tsconfig.node.json",
     "dev": "vite",
     "dev:web": "vite",
     "start": "node server/index.js",
