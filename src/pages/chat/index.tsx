@@ -390,10 +390,10 @@ ${JSON.stringify(response, null, 4)}
               <div style={{ height: 80 }} />
             </div>
           </div>
-    <div className={styles.chatPage_container_two} style={{
-position: isMobile ? 'fixed' : 'absolute'
-            }}
-          >
+    <div className={ styles.chatPage_container_two } 
+   style={{ position: isMobile ? 'fixed' : 'absolute'
+          }}
+/>
             <AllInput
               disabled={!!fetchController}
               onSend={(value) => {
