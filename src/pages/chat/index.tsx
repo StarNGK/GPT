@@ -14,6 +14,7 @@ import { filterObjectNull, formatTime, generateUUID, handleChatData } from '@/ut
 import { useScroll } from '@/hooks/useScroll'
 import useDocumentResize from '@/hooks/useDocumentResize'
 import Layout from '@/components/Layout'
+import useMobile from '@/hooks/useMobile'
 import { postImagesGenerations } from '@/request/api'
 
 function ChatPage() {
