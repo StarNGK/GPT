@@ -14,15 +14,10 @@ function isResponseData<T>(obj: any): obj is ResponseData<T> {
 }
 
 // 判断是否需要基础域名前缀
-//const getBaseUrl = (url: string) => {
-//const baseURL = import.meta.env.VITE_APP_REQUEST_HOST
-//if (/^http(s?):\/\//i.test(url)) return url
-//return baseURL + url
-//}
-
 const getBaseUrl = (url: string) => {
-  if (/^http(s?):\/\//i.test(url)) return url
-  return url
+const baseURL = import.meta.env.VITE_APP_REQUEST_HOST
+if (/^http(s?):\/\//i.test(url)) return url
+return baseURL + url
 }
 
 
