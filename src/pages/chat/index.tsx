@@ -393,7 +393,7 @@ ${JSON.stringify(response, null, 4)}
     <div className={ styles.chatPage_container_two } 
    style={{ position: isMobile ? 'fixed' : 'absolute'
           }}
-/>
+>
             <AllInput
               disabled={!!fetchController}
               onSend={(value) => {
