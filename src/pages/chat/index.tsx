@@ -475,9 +475,6 @@ ${JSON.stringify(response, null, 4)}
           </div>
           <div
             className={styles.chatPage_container_two}
-            style={{
-              position: isMobile ? 'fixed' : 'absolute'
-            }}
           >
             {config.model === 'dall-e-3' && imageSizeSelector}
             {imageUploadSelector}
