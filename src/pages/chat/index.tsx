@@ -10,8 +10,8 @@ import { postChatCompletions, postImagesGenerations, postUploadImage } from '@/r
 import Reminder from '@/components/Reminder';
 import { filterObjectNull, formatTime, generateUUID, handleChatData } from '@/utils';
 import { useScroll } from '@/hooks/useScroll';
-import { useMobile } from '@/hooks/useMobile';
 import Layout from '@/components/Layout';
+import useMobile from '@/hooks/useMobile';
 
 function ChatPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,8 @@ function ChatPage() {
     clearChatMessage,
     delChatMessage
   } = chatStore();
-
+	
+  const isMobile = useMobile()
   const [selectedQuickPrompt, setSelectedQuickPrompt] = useState('');
   // 在状态中添加一个用于存储上传文件的变量
   const [uploadedFile, setUploadedFile] = useState(null);
