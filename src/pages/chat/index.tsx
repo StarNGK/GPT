@@ -11,7 +11,6 @@ import Reminder from '@/components/Reminder';
 import { filterObjectNull, formatTime, generateUUID, handleChatData } from '@/utils';
 import { useScroll } from '@/hooks/useScroll';
 import Layout from '@/components/Layout';
-import useMobile from '@/hooks/useMobile';
 
 function ChatPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -41,7 +40,6 @@ function ChatPage() {
     delChatMessage
   } = chatStore();
 	
-  const isMobile = useMobile()
   const [selectedQuickPrompt, setSelectedQuickPrompt] = useState('');
   // 在状态中添加一个用于存储上传文件的变量
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -471,15 +469,11 @@ ${JSON.stringify(response, null, 4)}
                 )
               })}
               {chatMessages.length <= 0 && <Reminder />}
-              <div style={{ height: 80 }} />
+              <div style={{ height: 100 }} />
             </div>
           </div>
           <div
-            className={styles.chatPage_container_two}
-			style={{
-              position: isMobile ? 'fixed' : 'absolute'
-            }} 
-          >
+            className={styles.chatPage_container_two}>
             {config.model === 'dall-e-3' && imageSizeSelector}
             {imageUploadSelector}
             <AllInput
