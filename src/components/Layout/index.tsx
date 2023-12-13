@@ -2,10 +2,7 @@ import { MenuDataItem, ProLayout } from '@ant-design/pro-components';
 import HeaderRender from '../HeaderRender';
 import { ChatsInfo } from '@/types';
 import React from 'react';
-import { MenuProps } from 'antd';
-import { assert, log } from 'console';
-import { LogoutOutlined } from '@ant-design/icons';
-import logo from '../../assets/logo.svg'
+import { MenuProps } from 'antd'
 
 type Props = {
     menuExtraRender?: () => React.ReactNode,
@@ -16,7 +13,10 @@ type Props = {
     menuItemRender?: (item: MenuDataItem & {
         isUrl: boolean;
         onClick: () => void;
-    }, defaultDom: React.ReactNode, menuProps: MenuProps | any) => React.ReactNode | undefined,
+    },
+    defaultDom: React.ReactNode,
+    menuProps: MenuProps | any
+  ) => React.ReactNode | undefined,
     menuDataRender?: ((menuData: MenuDataItem[]) => MenuDataItem[]),
     menuFooterRender?: (props?: any) => React.ReactNode,
     menuProps?: MenuProps,
@@ -27,8 +27,8 @@ function Layout(props: Props) {
     const { menuExtraRender = () => <></>, menuItemRender = () => undefined } = props;
     return (
         <ProLayout
-            title="StarCloud-GPT"
-            logo={logo}
+        title={import.meta.env.VITE_APP_TITLE}
+        logo={import.meta.env.VITE_APP_LOGO}
             layout="mix"
             splitMenus={false}
             contentWidth="Fluid"
@@ -54,10 +54,10 @@ function Layout(props: Props) {
             route={props.route}
             menuDataRender={props.menuDataRender}
             avatarProps={{
-                src: '../../assets/header.png',
+                src: 'https://u1.dl0.cn/icon/1682426702646avatarf3db669b024fad66-1930929abe2847093.png',
                 size: 'small',
                 render: (props, dom) => <>{dom}</>
-            }}
+              }}
             menuFooterRender={props.menuFooterRender}
             menuProps={props.menuProps}
             breadcrumbRender={() => []}

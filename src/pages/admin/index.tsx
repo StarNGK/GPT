@@ -7,7 +7,6 @@ import React, { useState } from 'react'
 import menuList from '@/routers/menu_list'
 import { userStore } from '@/store'
 import OpenAiLogo from '@/components/OpenAiLogo'
-import logo from '../../assets/logo.svg'
 
 function AdminPage() {
   const navigate = useNavigate()
@@ -32,7 +31,7 @@ function AdminPage() {
     <div className={styles.admin}>
       <ProLayout
         title="后台管理系统"
-        logo={logo}
+        logo={import.meta.env.VITE_APP_LOGO}
         layout="mix"
         splitMenus={false}
         contentWidth="Fluid"

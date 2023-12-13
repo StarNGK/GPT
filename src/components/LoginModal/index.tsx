@@ -2,11 +2,17 @@ import { getCode } from '@/request/api'
 import { userAsync } from '@/store/async'
 import { RequestLoginParams } from '@/types'
 import {
+  HeartFilled,
   LockOutlined,
-  MailOutlined
+  MailOutlined,
+  RedditCircleFilled,
+  RobotOutlined,
+  SlackCircleFilled,
+  SmileFilled,
+  TwitterCircleFilled
 } from '@ant-design/icons'
 import { LoginForm, ProFormCaptcha, ProFormText } from '@ant-design/pro-form'
-import { Form, FormInstance, Modal, Tabs } from 'antd'
+import { Form, FormInstance, Modal, Space, Tabs } from 'antd'
 import { useState } from 'react'
 
 type Props = {
@@ -28,7 +34,15 @@ export function LoginCard(props: {
       form={props.form}
       logo={import.meta.env.VITE_APP_LOGO}
       title=""
-      subTitle="基于大语言模型的AI对话产品"
+      subTitle="全网最便宜的人工智能对话"
+      // actions={(
+      //   <Space>
+      //     <HeartFilled />
+      //     <RedditCircleFilled />
+      //     <SlackCircleFilled />
+      //     <TwitterCircleFilled />
+      //   </Space>
+      // )}
       contentStyle={{
         width: '100%',
         maxWidth: '340px',
@@ -65,7 +79,7 @@ export function LoginCard(props: {
       <ProFormText
         fieldProps={{
           size: 'large',
-          prefix: <MailOutlined />
+          prefix: <RobotOutlined />
         }}
         name="account"
         rules={[
