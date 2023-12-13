@@ -10,8 +10,8 @@ import { postChatCompletions, postImagesGenerations, postUploadImage } from '@/r
 import Reminder from '@/components/Reminder';
 import { filterObjectNull, formatTime, generateUUID, handleChatData } from '@/utils';
 import { useScroll } from '@/hooks/useScroll';
+import { useMobile } from '@/hooks/useMobile';
 import Layout from '@/components/Layout';
-import useMobile from '@/hooks/useMobile';
 
 function ChatPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
