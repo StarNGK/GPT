@@ -44,8 +44,10 @@
     &_container{
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 56px);
-
+		box-sizing: content-box;
+		overflow: hidden;
+		height: calc(100vh - 56px);
+		position: relative;
         &_one{
             flex: 1;
             width: 100%;
